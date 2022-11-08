@@ -1,6 +1,5 @@
 
-
-<form action="" method="post"> 
+<form action="/tutorial/index.php?modulo=ingresar" method="post">
 
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
@@ -24,7 +23,13 @@
   </tr>
   <tr>
     <td colspan="2" align="center"> <input type="submit" value="Registrar"> </td>
-   
-  </tr>
+
+
+
+</form>
+
+
+
+
+</tr>
 </table>
-</form> 

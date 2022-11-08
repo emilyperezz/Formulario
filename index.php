@@ -32,7 +32,7 @@
   <td><a href="index.php?modulo=ingresar">Ingresar</a></td>
 </tr>
 <tr>
-  <td>No implementado</td>
+  <td><a href="index.php?modulo=dashboard">Dashboard</a></td>
 </tr>
 <tr>
   <td>No implementado</td>
@@ -49,6 +49,8 @@
 include("./modulos/registrar.php");
 }else if($modulo== "ingresar"){
  include("./modulos/ingresar.php");
+}else if($modulo== "dashboard"){
+ include("./modulos/dashboard.php");
 }
 
   ?>
