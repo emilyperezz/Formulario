@@ -1,4 +1,4 @@
-<form action="/tutorial/index.php?modulo=dashboard" method="post">
+<form action="index.php?modulo=dashboard" method="post">
 
 <?php
 

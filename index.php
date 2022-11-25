@@ -35,7 +35,22 @@
   <td><a href="index.php?modulo=dashboard">Dashboard</a></td>
 </tr>
 <tr>
-  <td>No implementado</td>
+  <td><a href="index.php?modulo=ejercicio1">Ejercicio 1</a></td>
+</tr>
+<tr>
+  <td><a href="index.php?modulo=ejercicio2">Ejercicio 2</a></td>
+</tr>
+<tr>
+  <td><a href="index.php?modulo=ejercicio3">Ejercicio 3</a></td>
+</tr>
+<tr>
+  <td><a href="index.php?modulo=ejercicio4">Ejercicio 4</a></td>
+</tr>
+<tr>
+  <td><a href="index.php?modulo=ejercicio5">Ejercicio 5</a></td>
+</tr>
+<tr>
+  <td><a href="index.php?modulo=ejercicio6">Ejercicio 6</a></td>
 </tr>
 </table>
   <!-- FIN DE MENÚS -->
@@ -44,13 +59,31 @@
   <!-- INICIO CONTENEDOR PRINCIPAL -->
 
   <?php
-  $modulo= $_GET['modulo'];
+
+  
+if(isset($_GET["modulo"])){
+  $modulo=$_GET["modulo"];
+}else{
+  $modulo="";
+}
   if($modulo== "registrar"){
 include("./modulos/registrar.php");
 }else if($modulo== "ingresar"){
  include("./modulos/ingresar.php");
 }else if($modulo== "dashboard"){
  include("./modulos/dashboard.php");
+}else if($modulo== "ejercicio1"){
+ include("./modulos/ejercicio1.php");
+}else if($modulo== "ejercicio2"){
+ include("./modulos/ejercicio2.php");
+}else if($modulo== "ejercicio3"){
+ include("./modulos/ejercicio3.php");
+}else if($modulo== "ejercicio4"){
+ include("./modulos/ejercicio4.php");
+}else if($modulo== "ejercicio5"){
+ include("./modulos/ejercicio5.php");
+}else if($modulo== "ejercicio6"){
+ include("./modulos/ejercicio6.php");
 }
 
   ?>

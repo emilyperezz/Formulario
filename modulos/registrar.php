@@ -1,5 +1,5 @@
 
-<form action="/tutorial/index.php?modulo=ingresar" method="post">
+<form action="index.php?modulo=ingresar" method="post">
 
 <table border="1" cellspacing="0" cellpadding="5">
   <tr>
