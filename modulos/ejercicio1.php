@@ -28,7 +28,6 @@ $float=(float)$D;
 $X=($D-$DimensionC);
 $float=(float) $X;
 $aT=(($D*$X)/2);
-$float=(float)$aT;
 $aC=($D*$X);
 ?>
 

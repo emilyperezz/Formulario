@@ -15,7 +15,7 @@ $km=($distancia/1000);
 $float=(float)$km;
 $distancia2=((1*$distancia)/1000);
 $float=(float)$distancia2;
-$velocidad=($distancia2*$min);
+$velocidad=($distancia2/$min);
 ?>
 
 
