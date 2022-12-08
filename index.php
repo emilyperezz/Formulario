@@ -26,7 +26,13 @@
   <td><a href="index.php">Principal</a></td>
 </tr>
 <tr>
-  <td><a href="index.php?modulo=registrar">Registrar</a></td>
+  <td><a href="index.php?modulo=registrar">Registrar Usuarios</a></td>
+</tr>
+<tr>
+  <td><a href="index.php?modulo=registrarTeachers">Registrar Teachers</a></td>
+</tr>
+<tr>
+  <td><a href="index.php?modulo=registrarTareas">Registrar Tareas</a></td>
 </tr>
 <tr>
   <td><a href="index.php?modulo=ingresar">Ingresar</a></td>
@@ -68,6 +74,10 @@ if(isset($_GET["modulo"])){
 }
   if($modulo== "registrar"){
 include("./modulos/registrar.php");
+}else if($modulo== "registrarTeachers"){
+ include("./modulos/registrarTeachers.php");
+}else if($modulo== "registrarTareas"){
+ include("./modulos/registrarTareas.php");
 }else if($modulo== "ingresar"){
  include("./modulos/ingresar.php");
 }else if($modulo== "dashboard"){

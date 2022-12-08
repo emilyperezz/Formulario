@@ -1,5 +1,3 @@
-<form action="index.php?modulo=dashboard" method="post">
-
 <?php
 
 if (isset($_POST["nombres"])){;
@@ -26,13 +24,29 @@ if (isset($_POST["clave"])){;
   $clave="";
 }
 
+if (isset($_POST["date"])){;
+ $date=$_POST["date"];
+}else{
+  $date="";
+}
 
+if (isset($_POST["address"])){;
+ $address=$_POST["address"];
+}else{
+  $address="";
+}
+
+if (isset($_POST["avatar"])){;
+  $avatar=$_POST["avatar"];
+}else{
+  $avatar="";
+}
 
 
 ?>
 
 
-<form action="welcome.php">
+<form action="index.php?modulo=dashboard" method="post">
   <table border="1" width="100%" cellspacing="0" cellpadding="5">
     
     <tr>
