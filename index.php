@@ -29,7 +29,7 @@
   <td><a href="index.php?modulo=registrar">Registrar Usuarios</a></td>
 </tr>
 <tr>
-  <td><a href="index.php?modulo=registrarTeachers">Registrar Teachers</a></td>
+  <td><a href="index.php?modulo=registrarProfesores">Registrar Profesores</a></td>
 </tr>
 <tr>
   <td><a href="index.php?modulo=registrarTareas">Registrar Tareas</a></td>
@@ -66,6 +66,14 @@
 
   <?php
 
+
+
+
+  ?>
+
+
+  <?php
+
   
 if(isset($_GET["modulo"])){
   $modulo=$_GET["modulo"];
@@ -74,8 +82,8 @@ if(isset($_GET["modulo"])){
 }
   if($modulo== "registrar"){
 include("./modulos/registrar.php");
-}else if($modulo== "registrarTeachers"){
- include("./modulos/registrarTeachers.php");
+}else if($modulo== "registrarProfesores"){
+ include("./modulos/registrarProfesores.php");
 }else if($modulo== "registrarTareas"){
  include("./modulos/registrarTareas.php");
 }else if($modulo== "ingresar"){

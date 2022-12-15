@@ -26,13 +26,16 @@ require_once("autoload.php");
     $this->date = $date;
     $this->address = $address;
     $this->avatar = $avatar;
-    
+
+  
     
     $sql= "INSERT INTO users( name, lastname, email, password, date_of_birth, address, avatar,active) VALUES (?,?,?,?,?,?,?,1)";
+    
 
     $insert = $this->conexion->prepare($sql);
     $arrayData = array ($this->name, $this->lastname, $this->email,$this->password, $this->date, $this->address, $this->avatar);
     $insert->execute($arrayData);
+   
   }
  }
 

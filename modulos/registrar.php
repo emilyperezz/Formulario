@@ -1,99 +1,120 @@
 <?php
 require_once("./autoload.php");
 
-//AQUI VAS A RECIBIR LAS VARIABLES POR POST
-if (isset($_POST["nombres"])){;
+//Se reciben variables por Post
+
+if (isset($_POST["nombres"])){
  $nombres=$_POST["nombres"];
 }else{
   $nombres="";
 }
-
-if (isset($_POST["apellidos"])){;
+ 
+if (isset($_POST["apellidos"])){
  $apellidos=$_POST["apellidos"];
 }else{
   $apellidos="";
 }
 
-if (isset($_POST["correo_electronico"])){;
+if (isset($_POST["correo_electronico"])){
   $correo_electronico=$_POST["correo_electronico"];
 }else{
   $correo_electronico="";
 }
 
-if (isset($_POST["clave"])){;
+if (isset($_POST["clave"])){
  $clave=$_POST["clave"];
 }else{
   $clave="";
 }
 
-if (isset($_POST["date"])){;
+if (isset($_POST["date"])){
  $date=$_POST["date"];
 }else{
   $date="";
 }
-//$date = $fecha_hora_actual = date('Y-m-d H:i:s');
 
 $date = date('Y-m-d H:i:s',strtotime($date));
 
 
-if (isset($_POST["address"])){;
+if (isset($_POST["address"])){
  $address=$_POST["address"];
 }else{
   $address="";
 }
 
-if (isset($_POST["avatar"])){;
-  $avatar=$_POST["avatar"];
-}else{
-  $avatar="";
-}
+if (isset($_FILES["avatar"])){
+   $avatar=$nombreImg = $_FILES['avatar']['name'];
+    $ruta = $_FILES['avatar']['tmp_name'];
+    $destino = "images"."/".$nombreImg;
+    move_uploaded_file($ruta, $destino);}
+  
+ 
+ 
+ if(isset($_POST["nombres"])){
+   $users = new Users();
 
-//y aqui es donde vas a crear la instancia
-$users = new Users();
+    $users->insertUsuario($nombres, $apellidos, $correo_electronico, $clave, $date, $address, $destino);
 
-$users->insertUsuario($nombres, $apellidos, $correo_electronico, $clave, $date, $address, $avatar);
+    if(isset($_POST["submit"])){
+    
+    
 
-?>
+    echo "<script type=\"text/javascript\">alert(\"Usuario Registrado\");</script>";
 
-<form action="index.php?modulo=registrar" method="post">
+    }
+    exit();
+    header("Location: index.php?=registrar");
+  }
+  
 
-<table border="1" cellspacing="0" cellpadding="5">
+
+
+ ?>
+
+
+
+<form action="index.php?modulo=registrar" method="post" enctype="multipart/form-data">
+  
+  <table border="1" cellspacing="0" cellpadding="5">
   <tr>
     <td colspan="2" ><h3>Formulario de Registro</h3></td>
   </tr>
   <tr>
     <td width="150">Nombres:</td>
-    <td> <input type="text" name="nombres" id=""> </td>
+    <td> <input type="text" name="nombres" id=""  autocomplete="name" required> </td>
   </tr>
   <tr>
     <td width="150">Apellidos:</td>
-    <td> <input type="text" name="apellidos" id=""> </td>
+    <td> <input type="text" name="apellidos" id="" autocomplete="apellidos" required> </td>
   </tr>
   <tr>
     <td width="150">Correo Electrónico:</td>
-    <td> <input type="text" name="correo_electronico" size="30" id=""> </td>
+    <td> <input type="email" name="correo_electronico" size="30" id="" autocomplete="correo_electronico" required> </td>
   </tr>
   <tr>
     <td width="150">Clave de acceso:</td>
-    <td> <input type="password" name="clave" id=""> </td>
-  </tr>
-    <tr>
-    <td width="150">Fecha de nacimiento:</td>
-    <td> <input type="date"  name="date" id=""> </td>
-  </tr>
-    <tr>
-    <td width="150">Dirección:</td>
-    <td> <input type="text" name="address" id=""> </td>
-  </tr>
-    <tr>
-    <td width="150">Avatar:</td>
-    <td> <input type="text" name="avatar" id=""> </td>
+    <td> <input type="password" name="clave" id="" autocomplete="clave" required> </td>
   </tr>
   <tr>
-    <td colspan="2" align="center"> <input type="submit" name="registrar"</td>
-
-
-
+    <td width="150">Fecha de nacimiento:</td>
+    <td> <input type="date"  name="date" id="" autocomplete="date" required> </td>
+  </tr>
+  <tr>
+    <td width="150">Dirección:</td>
+    <td> <input type="text" name="address" id="" autocomplete="address" required> </td>
+  </tr>
+  <tr>
+    <td width="150">Avatar:</td>
+    <td> <input type="file" name="avatar" id="" autocomplete="avatar" required> </td>
+  </tr>
+  <tr>
+    <td width="150">Active:</td>
+    <td> <input type="checkbox" name="active" id=""> </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"> <input type="submit" name="submit" value="Registrar"></td>
+    
+    
 </form>
 
 
