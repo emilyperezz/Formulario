@@ -42,29 +42,38 @@ if (isset($_POST["address"])){
   $address="";
 }
 
+if (isset($_POST["active"])){
+  $active=($_POST["active"] == "on") ? 1 : 0;
+}else{
+ $active=0;
+}
+
 if (isset($_FILES["avatar"])){
    $avatar=$nombreImg = $_FILES['avatar']['name'];
     $ruta = $_FILES['avatar']['tmp_name'];
-    $destino = "images"."/".$nombreImg;
-    move_uploaded_file($ruta, $destino);}
+    $destino = "images"."/".$nombreImg.'_'.date('Y-m-d H:i:s');
+    move_uploaded_file($ruta,$destino);
+  }
+
+  //.'_'.date('Y-m-d H:i:s');
   
- 
- 
+  
  if(isset($_POST["nombres"])){
    $users = new Users();
 
-    $users->insertUsuario($nombres, $apellidos, $correo_electronico, $clave, $date, $address, $destino);
+    $users->insertUsuario($nombres, $apellidos, $correo_electronico, $clave, $date, $address, $destino, $active);
 
     if(isset($_POST["submit"])){
-    
-    
+      {
 
-    echo "<script type=\"text/javascript\">alert(\"Usuario Registrado\");</script>";
-
+       echo "<script type=\"text/javascript\">alert(\"Usuario Registrado\");</script>";
+        
+        exit();
+        header("Location: index.php");
+      }
     }
-    exit();
-    header("Location: index.php?=registrar");
   }
+  
   
 
 
@@ -109,7 +118,7 @@ if (isset($_FILES["avatar"])){
   </tr>
   <tr>
     <td width="150">Active:</td>
-    <td> <input type="checkbox" name="active" id=""> </td>
+    <td><input type="checkbox" name="active" id=""> </td>
   </tr>
   <tr>
     <td colspan="2" align="center"> <input type="submit" name="submit" value="Registrar"></td>

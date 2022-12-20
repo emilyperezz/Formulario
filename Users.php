@@ -17,7 +17,7 @@ require_once("autoload.php");
    $this->conexion= $this->conexion->connect();
   }
 
-  public function insertUsuario(string $name, string $lastname, string $email, string $password, string $date, string $address, string $avatar){
+  public function insertUsuario(string $name, string $lastname, string $email, string $password, string $date, string $address, string $avatar, int $active){
 
     $this->name = $name;
     $this->lastname = $lastname;
@@ -26,16 +26,18 @@ require_once("autoload.php");
     $this->date = $date;
     $this->address = $address;
     $this->avatar = $avatar;
+    $this->active = $active;
 
   
     
-    $sql= "INSERT INTO users( name, lastname, email, password, date_of_birth, address, avatar,active) VALUES (?,?,?,?,?,?,?,1)";
+    $sql= "INSERT INTO users( name, lastname, email, password, date_of_birth, address, avatar,active) VALUES (?,?,?,?,?,?,?,?)";
     
 
     $insert = $this->conexion->prepare($sql);
-    $arrayData = array ($this->name, $this->lastname, $this->email,$this->password, $this->date, $this->address, $this->avatar);
+    $arrayData = array ($this->name, $this->lastname, $this->email,$this->password, $this->date, $this->address, $this->avatar, $this->active);
     $insert->execute($arrayData);
    
+
   }
  }
 
