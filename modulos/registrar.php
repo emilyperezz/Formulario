@@ -48,14 +48,15 @@ if (isset($_POST["active"])){
  $active=0;
 }
 
+//$datetime=date('Y-m-d');
+
+
 if (isset($_FILES["avatar"])){
    $avatar=$nombreImg = $_FILES['avatar']['name'];
     $ruta = $_FILES['avatar']['tmp_name'];
-    $destino = "images"."/".$nombreImg.'_'.date('Y-m-d H:i:s');
+    $destino = "images/imagenes"."/".$datetime=date('Y-m-d').'-'.$nombreImg;
     move_uploaded_file($ruta,$destino);
   }
-
-  //.'_'.date('Y-m-d H:i:s');
   
   
  if(isset($_POST["nombres"])){
