@@ -83,7 +83,7 @@ if (isset($_FILES["avatar"])){
 
 
 
-<form action="index.php?modulo=registrar" method="post" enctype="multipart/form-data">
+<form  method="post" enctype="multipart/form-data">
   
   <table border="1" cellspacing="0" cellpadding="5">
   <tr>

@@ -64,54 +64,89 @@
 <td height="800" valign="top">
   <!-- INICIO CONTENEDOR PRINCIPAL -->
 
-  <?php
-
-
-
-
-  ?>
-
 
   <?php
 
-  
-if(isset($_GET["modulo"])){
-  $modulo=$_GET["modulo"];
-}else{
-  $modulo="";
-}
-  if($modulo== "registrar"){
-include("./modulos/registrar.php");
-}else if($modulo== "registrarProfesores"){
- include("./modulos/registrarProfesores.php");
-}else if($modulo== "registrarTareas"){
- include("./modulos/registrarTareas.php");
-}else if($modulo== "ingresar"){
- include("./modulos/ingresar.php");
-}else if($modulo== "dashboard"){
- include("./modulos/dashboard.php");
-}else if($modulo== "ejercicio1"){
- include("./modulos/ejercicio1.php");
-}else if($modulo== "ejercicio2"){
- include("./modulos/ejercicio2.php");
-}else if($modulo== "ejercicio3"){
- include("./modulos/ejercicio3.php");
-}else if($modulo== "ejercicio4"){
- include("./modulos/ejercicio4.php");
-}else if($modulo== "ejercicio5"){
- include("./modulos/ejercicio5.php");
-}else if($modulo== "ejercicio6"){
- include("./modulos/ejercicio6.php");
-}
+      require_once("./autoload.php");
 
-  ?>
 
-  <!-- FIN DE CONTENEDOR PRINCIPAL -->
+      if(isset($_GET["modulo"])){
+        $modulo=$_GET["modulo"];
+      }else{
+        $modulo="";
+      }
+      if($modulo== "registrar"){
+        include("./modulos/registrar.php");
+      }else if($modulo== "registrarProfesores"){
+        include("./modulos/registrarProfesores.php");
+      }else if($modulo== "registrarTareas"){
+        include("./modulos/registrarTareas.php");
+      }else if($modulo== "ingresar"){
+        include("./modulos/ingresar.php");
+      }else if($modulo== "dashboard"){
+        include("./modulos/dashboard.php");
+      }else if($modulo== "ejercicio1"){
+        include("./modulos/ejercicio1.php");
+      }else if($modulo== "ejercicio2"){
+        include("./modulos/ejercicio2.php");
+      }else if($modulo== "ejercicio3"){
+        include("./modulos/ejercicio3.php");
+      }else if($modulo== "ejercicio4"){
+        include("./modulos/ejercicio4.php");
+      }else if($modulo== "ejercicio5"){
+        include("./modulos/ejercicio5.php");
+      }else if($modulo== "ejercicio6"){
+        include("./modulos/ejercicio6.php");
+      }
+
+$objUsuario = new Users();
+
+$users=$objUsuario->getUsuarios();
+
+if($modulo == ""){ ?>
+ <table width="100%" border="1" cellspacing="0" cellpadding="5">
+   <tr>
+     <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Email</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Dirección</th>
+      <th>Avatar</th>
+      <th>Activo</th>
+      <th>Acciones</th>
+    </tr>
+    <?php foreach($users as $user){ ?>
+    <tr>
+        <td><?php echo $user["name"] ?></td>
+        <td><?php echo $user["lastname"] ?></td>
+        <td><?php echo $user["email"] ?></td>
+        <td><?php echo $user["date_of_birth"] ?></td>
+        <td><?php echo $user["address"] ?></td>
+        <td>
+          <img src="<?php echo $user["avatar"] ?>" alt="img" width="50" height="50">
+          </td>
+        <td><?php 
+              if ($user["active"] == 1) echo "si";
+              else echo "no";
+            ?>
+        </td>
+        <td>
+           <a href="editar.php">Editar
+           </a>
+              <a  href="./eliminar.php=?id=<?php echo $user["id"]?>">Eliminar
+            </a>
+           </td>
+      </tr>
+     <?php }?>
+  </table> 
+  <?php }?>
+
+<!-- FIN DE CONTENEDOR PRINCIPAL -->
 </td>
 
 <tr>
-</table>
-
+  </table>
+  
 </body>
 </html>
 
